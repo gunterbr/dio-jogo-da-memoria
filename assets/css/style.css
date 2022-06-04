@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: azure;
+}
+
+.container-card {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-box {
+    width: 640px;
+    height: 640px;
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(calc(25% - 8px), 1fr));
+    background: #FFF;
+    perspective: 1000px;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .9s;
+}
+
+.card:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+
+.card-frente,
+.card-verso {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+.card-frente {
+    transform: rotateY(180deg);
+}
+
+.card-frente > img {
+    width: 100%;
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card-verso {
+    background-image: url('https://i.pinimg.com/564x/71/1e/da/711eda25308c65a7756751088866e181.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+}
+
+.dissolver{
+    animation: loading 3s linear infinite;
+}
+
+@keyframes loading {
+    0% { 
+       transform: scale(1) rotate(0deg);
+    }
+    100% { 
+       transform: scale(0) rotate(360deg);
+    }
+}
+
+#congrats {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#congrats > h2 {
+    font-size: 50pt;
+}
+#congrats > a {
+    text-decoration: none;
+}
